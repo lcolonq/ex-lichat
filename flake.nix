@@ -72,7 +72,7 @@
               };
               serviceConfig = {
                 Restart = "on-failure";
-                ExecStart = "${lichat}/bin/lichat";
+                ExecStart = "${lichat}/bin/lichat start";
                 DynamicUser = "yes";
                 RuntimeDirectory = "colonq.lichat";
                 RuntimeDirectoryMode = "0755";
