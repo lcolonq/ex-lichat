@@ -31,8 +31,8 @@
         name = "lichat-write-config-root";
         phases = [ "installPhase" ];
         installPhase = ''
-          ${pkgs.lib.toShellVar "lichat_conf" s}'
-          mkdir $out/config
+          ${pkgs.lib.toShellVar "lichat_conf" s}
+          mkdir -p $out/config
           echo "$lichat_conf" >$out/config/secret.exs
         '';
       };
@@ -91,7 +91,10 @@
           pkgs.beamPackages.hex
         ];
       };
-      packages.x86_64-linux.default = lichat;
+      packages.x86_64-linux = {
+        inherit lichat;
+        default = lichat;
+      };
       nixosModules = {
         lichat = lichatModule;
       };
